@@ -12,13 +12,13 @@
 FtpCrack es un script para ataques de Fuerza Bruta,
 para asi lograr acceder a un servidor FTP.
 
-<img src="https://github.com/JRIC2002/FtpCrack/blob/master/.Screenshots/FtpCrack_screenshot.jpg" width="100%"/>
+<img src="https://github.com/jric2002/FtpCrack/blob/master/.Screenshots/FtpCrack_screenshot.jpg" width="100%"/>
  
 >> PROCESO DE INSTALACION.
 
         1.- Clonar el repositorio de FtpCrack.
 
-                * git clone https://github.com/JRIC2002/FtpCrack
+                * git clone https://github.com/jric2002/FtpCrack
                 
         2.- Entrar a la carpeta "FtpCrack".
 
