@@ -12,7 +12,7 @@
 FtpCrack es un script para ataques de Fuerza Bruta,
 para asi lograr acceder a un servidor FTP.
 
-<img src="https://github.com/jric2002/FtpCrack/blob/master/.Screenshots/FtpCrack_screenshot.jpg" width="100%"/>
+<img src="https://github.com/jric2002/FtpCrack/blob/master/.Screenshots/FtpCrack_screenshot.png" width="100%"/>
  
 >> PROCESO DE INSTALACION.
 
